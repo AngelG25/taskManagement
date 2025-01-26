@@ -1,27 +1,27 @@
-# Proyecto API CRUD de Tareas
+# Task Management API CRUD Project
 
-## Descripción
+## Description
 
-Este proyecto es una API desarrollada en Java que implementa operaciones CRUD para la gestión de tareas. El sistema utiliza **DTOs** (Data Transfer Objects) y **DAOs** (Data Access Objects) para estructurar y gestionar los datos de manera eficiente. Además, se incluye:
+This project is an API developed in Java that implements CRUD operations for task management. The system leverages **DTOs** (Data Transfer Objects) and **DAOs** (Data Access Objects) to efficiently structure and manage data. Additionally, the project includes:
 
-- Uso de **Postman** y **Swagger** para pruebas.
-- Manejo de **excepciones personalizadas**.
-- Persistencia de datos en una base de datos (BBDD) simple.
+- Use of **Postman** and **Swagger** for testing.
+- Implementation of **custom exception handling**.
+- Data persistence in a simple database.
 
-## Características principales
+## Key Features
 
-- **CRUD completo**: Crear, Leer, Actualizar y Eliminar tareas.
-- **DTOs y DAOs**: Arquitectura modular para la transferencia y acceso a los datos.
-- **Swagger UI**: Documentación interactiva de la API para facilitar su uso.
-- **Postman**: Colección de pruebas para validar las operaciones CRUD.
-- **Manejo de excepciones**: Respuestas claras y personalizadas ante errores.
-- **Persistencia en BBDD simple**: Almacenamiento de datos con un enfoque sencillo.
+- **Complete CRUD functionality**: Create, Read, Update, and Delete tasks.
+- **DTOs and DAOs**: Modular architecture for data transfer and access.
+- **Swagger UI**: Interactive API documentation for easier use.
+- **Postman**: Test collection to validate CRUD operations.
+- **Exception Handling**: Clear and custom error responses.
+- **Simple Database Persistence**: Data storage with a straightforward approach.
 
-## Tecnologías utilizadas
+## Technologies Used
 
-- **Java**: Lenguaje de programación principal.
-- **Spring Boot**: Framework para desarrollo de aplicaciones web.
-- **JPA/Hibernate**: Para la interacción con la base de datos.
-- **PostgreSQL**: Base de datos para simplicidad.
-- **Swagger**: Generación automática de documentación.
-- **Postman**: Herramienta para pruebas API.
+- **Java**: Primary programming language.
+- **Spring Boot**: Framework for web application development.
+- **JPA/Hibernate**: For database interaction.
+- **PostgreSQL**: Database for simplicity.
+- **Swagger**: Automatic API documentation generation.
+- **Postman**: API testing tool.
