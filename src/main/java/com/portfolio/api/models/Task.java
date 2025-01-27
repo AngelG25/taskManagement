@@ -1,12 +1,14 @@
 package com.portfolio.api.models;
 
+import lombok.Builder;
 import lombok.Value;
 import org.jetbrains.annotations.NotNull;
 
 import javax.validation.Valid;
 import java.time.Instant;
 
-@Value
+@Builder(toBuilder = true)  // Builder to be able to modify the class afterward
+@Value                      // Create a private constructor, equals, hashCode, toString and makes the class final
 public class Task {
 
     @NotNull
