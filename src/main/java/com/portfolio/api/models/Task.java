@@ -91,4 +91,14 @@ public class Task {
                 ", creationDate=" + creationDate +
                 '}';
     }
+
+    public Task(Instant endDate, Instant updateDate, String description, String idTask, String title, String priority, Instant creationDate) {
+        this.endDate = endDate;
+        this.updateDate = updateDate;
+        this.description = description;
+        this.idTask = idTask;
+        this.title = title;
+        this.priority = priority;
+        this.creationDate = creationDate;
+    }
 }

@@ -6,4 +6,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - taskManagement</name>
   <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
