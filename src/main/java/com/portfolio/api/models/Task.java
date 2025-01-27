@@ -1,20 +1,39 @@
 package com.portfolio.api.models;
 
+import org.jetbrains.annotations.NotNull;
+
+import javax.validation.Valid;
 import java.time.Instant;
 import java.util.Objects;
 
 public class Task {
 
-    private Instant endDate;
-
-    private Instant updateDate;
-
-    private String description;
-
+    @NotNull
+    @Valid
     private String idTask;
 
+    @NotNull
+    @Valid
+    private Instant creationDate;
+
+    @NotNull
+    @Valid
+    private Instant updateDate;
+
+    @NotNull
+    @Valid
+    private Instant endDate;
+
+    @NotNull
+    @Valid
+    private String description;
+
+    @NotNull
+    @Valid
     private String title;
 
+    @NotNull
+    @Valid
     private String priority;
 
     public Instant getCreationDate() {
@@ -60,8 +79,6 @@ public class Task {
     public void setPriority(String priority) {
         this.priority = priority;
     }
-
-    private Instant creationDate;
 
     @Override
     public boolean equals(Object o) {
