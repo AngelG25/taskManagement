@@ -3,6 +3,7 @@ package com.portfolio.api;
 import com.portfolio.api.models.Task;
 
 import java.util.stream.Stream;
+import com.portfolio.api.exceptions.TaskNotFoundException;
 
 public interface TaskApi {
 
@@ -17,6 +18,7 @@ public interface TaskApi {
      * Fetches a task by their ID.
      *
      * @return the task with the id indicated.
+     * @throws TaskNotFoundException if the task cannot be found
      */
     Task getTaskById();
 
@@ -25,6 +27,7 @@ public interface TaskApi {
      *
      * @param task the task with the modified fields.
      * @return true if the task was successfully updated.
+     * @throws TaskNotFoundException if the task cannot be found
      */
     Boolean updateTask(Task task);
 
@@ -33,6 +36,7 @@ public interface TaskApi {
      *
      * @param taskId the UUID of the task to delete.
      * @return true if the task was successfully deleted, or false if the task was not found.
+     * @throws TaskNotFoundException if the task cannot be found
      */
     Boolean removeTask(String taskId);
 }
