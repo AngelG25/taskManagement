@@ -8,3 +8,11 @@ In this project Jakarta EE is used for several reasons:
 
 The dependency "springdoc-openapi-starter-webmvc-ui" it is used for Spring to generate documentation for Swagger, it allows us to use annotations
 such as @Tag or @PathVariable or @ApiResponses
+
+The "lombok" dependency is crucial for the creation of the objects because it allows us to use the @Value, @Builder annotations
+
+The dependency "jackson-annotations" is used for the serialization and deserialization of the objects, so it allows us to use @JsonProperty annotation
+
+The "validation-api" dependency is necessary for the validation of the objects through the @Valid annotation, this dependency needs another dependency
+to be useful, for example, the "annotations" dependency with "org.jetbrains" as group id that allows us to check @Size, @NotNull ...
+
