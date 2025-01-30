@@ -4,7 +4,7 @@ In this project Jakarta EE is used for several reasons:
     it also allows us to use annotations as @Produces, @Consumes that are very useful for Swagger and documentation
 
     The dependency "jakarta.persistence-api" (JPA) is used to work with relational databases such as PostgresSQL and MySQL, it allows us to do
-    transactions without the need of Hibernate
+    transactions without the need of Hibernate, it is necessary for the @Column, @Id, @Table ... annotations
 
 The dependency "springdoc-openapi-starter-webmvc-ui" it is used for Spring to generate documentation for Swagger, it allows us to use annotations
 such as @Tag or @PathVariable or @ApiResponses
