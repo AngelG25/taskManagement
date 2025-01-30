@@ -1,8 +1,10 @@
 package com.portfolio.dao;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.Instant;
-import java.util.Date;
 
 @Entity
 @Table(name = "tasks")
@@ -14,9 +16,11 @@ public class TaskDao {
     String uuidTask;
 
     @Column(name = "creation_date", updatable = false)
+    @CreationTimestamp
     private Instant creationDate;
 
     @Column(name = "update_date", updatable = false)
+    @UpdateTimestamp
     private Instant updateDate;
 
     @Column(name = "end_date", updatable = false)
@@ -30,15 +34,5 @@ public class TaskDao {
 
     @Column(name = "priority", updatable = false)
     private String priority;
-
-    @PrePersist
-    protected void onCreate() {
-        creationDate = new Date().toInstant();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updateDate = new Date().toInstant();
-    }
 
 }
