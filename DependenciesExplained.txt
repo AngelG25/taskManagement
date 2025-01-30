@@ -1,0 +1,21 @@
+The "spring-boot-starter-data-jpa" is used in this project to use annotations that are included in Hibernate and therefore in the spring
+environment, for example de @CreationTimestamp
+
+In this project Jakarta EE is used for several reasons:
+
+    The dependency "jakarta.ws.rs-api" (JAX-RS) allows us to simplify the endpoint creation by using @GET instead of @GetMapping and vice versa
+    it also allows us to use annotations as @Produces, @Consumes that are very useful for Swagger and documentation
+
+    The dependency "jakarta.persistence-api" (JPA) is used to work with relational databases such as PostgresSQL and MySQL, it allows us to do
+    transactions without the need of Hibernate, it is necessary for the @Column, @Id, @Table ... annotations
+
+The dependency "springdoc-openapi-starter-webmvc-ui" it is used for Spring to generate documentation for Swagger, it allows us to use annotations
+such as @Tag or @PathVariable or @ApiResponses
+
+The "lombok" dependency is crucial for the creation of the objects because it allows us to use the @Value, @Builder annotations
+
+The dependency "jackson-annotations" is used for the serialization and deserialization of the objects, so it allows us to use @JsonProperty annotation
+
+The "validation-api" dependency is necessary for the validation of the objects through the @Valid annotation, this dependency needs another dependency
+to be useful, for example, the "annotations" dependency with "org.jetbrains" as group id that allows us to check @Size, @NotNull ...
+

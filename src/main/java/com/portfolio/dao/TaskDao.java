@@ -6,7 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
-@Table(name="tasks")
+@Entity
+@Table(name = "tasks")
 public class TaskDao {
 
     @Id
@@ -14,12 +15,12 @@ public class TaskDao {
     @Column(name = "uuid", nullable = false)
     String uuidTask;
 
-    @CreationTimestamp
     @Column(name = "creation_date", updatable = false)
+    @CreationTimestamp
     private Instant creationDate;
 
-    @UpdateTimestamp
     @Column(name = "update_date", updatable = false)
+    @UpdateTimestamp
     private Instant updateDate;
 
     @Column(name = "end_date", updatable = false)
