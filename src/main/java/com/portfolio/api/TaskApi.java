@@ -17,10 +17,11 @@ public interface TaskApi {
     /**
      * Fetches a task by their ID.
      *
+     * @param taskId the id of the task you are looking for
      * @return the task with the id indicated.
      * @throws TaskNotFoundException if the task cannot be found
      */
-    Task getTaskById();
+    Task getTaskById(String taskId);
 
     /**
      * Updates a task with the information in the body.
