@@ -1,5 +1,5 @@
 The "spring-boot-starter-data-jpa" is used in this project to use annotations that are included in Hibernate and therefore in the spring
-environment, for example de @CreationTimestamp
+environment, for example de @CreationTimestamp, it is necessary to configure the database with the help of JPA
 
 In this project Jakarta EE is used for several reasons:
 
