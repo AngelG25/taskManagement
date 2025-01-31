@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
   <artifactId>taskManagement</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.6-SNAPSHOT</version>
   <name>Archetype - taskManagement</name>
   <url>http://maven.apache.org</url>
     <dependencies>
@@ -51,6 +51,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>3.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
 
     </dependencies>
