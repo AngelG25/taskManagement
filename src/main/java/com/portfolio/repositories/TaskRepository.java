@@ -9,4 +9,7 @@ public interface TaskRepository extends JpaRepository<Task, String> {
 
     // Using JpaRepository creates a CRUD automatically for the TaskRepository and is perfect
     // for an application using Jakarta JPA with Hibernate
+
+    // TODO creation of a scheme of the hole project with its dependencies
+
 }
