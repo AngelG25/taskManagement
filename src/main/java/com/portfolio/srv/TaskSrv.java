@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;
 
-@SuppressWarnings("ALL")
 @Service
 @AllArgsConstructor
 @Log4j2
@@ -19,7 +18,7 @@ public class TaskSrv implements TaskApi {
     private final TaskRepository taskRepository;
     private static final String TASK_ID = "Task with id: ";
     private static final String NOT_FOUND = "couldn't be found";
-    private static final String LOG_ERROR = "Task with id: {} couldn't be found {}";
+    private static final String LOG_ERROR = "Task with id: {} couldn't be found";
 
     @Override
     public Stream<Task> getTasks() {
@@ -41,8 +40,7 @@ public class TaskSrv implements TaskApi {
         if (checkExistence(idTask)) {
             taskRepository.save(updatedTask);
         } else {
-            log.error(LOG_ERROR, idTask, "to update");
-            throw new TaskNotFoundException(TASK_ID + idTask + NOT_FOUND);
+            throwException(idTask);
         }
     }
 
@@ -52,9 +50,13 @@ public class TaskSrv implements TaskApi {
         if (checkExistence(idTask)) {
             taskRepository.deleteById(idTask);
         } else {
-            log.error(LOG_ERROR, idTask, "to delete");
-            throw new TaskNotFoundException(TASK_ID + idTask + NOT_FOUND);
+            throwException(idTask);
         }
+    }
+
+    private static void throwException(final String idTask) {
+        log.error(LOG_ERROR, idTask);
+        throw new TaskNotFoundException(TASK_ID + idTask + NOT_FOUND);
     }
 
     private boolean checkExistence(final String idTask) {

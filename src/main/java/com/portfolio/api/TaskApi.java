@@ -1,9 +1,9 @@
 package com.portfolio.api;
 
+import com.portfolio.api.exceptions.TaskNotFoundException;
 import com.portfolio.api.models.Task;
 
 import java.util.stream.Stream;
-import com.portfolio.api.exceptions.TaskNotFoundException;
 
 public interface TaskApi {
 
