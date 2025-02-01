@@ -20,6 +20,8 @@ public class TaskSrv implements TaskApi {
     private static final String NOT_FOUND = "couldn't be found";
     private static final String LOG_ERROR = "Task with id: {} couldn't be found";
 
+    // TODO FIX all the repository to use TaskDao instead of Task
+
     @Override
     public Stream<Task> getTasks() {
         log.info("Get tasks request..");
