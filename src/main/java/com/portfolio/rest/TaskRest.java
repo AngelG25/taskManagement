@@ -31,14 +31,14 @@ public class TaskRest {
     @POST
     @Path("/updateTask")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Boolean updateTask(Task task) {
-        return taskApi.updateTask(task);
+    public void updateTask(Task task) {
+        taskApi.updateTask(task);
     }
 
     @POST
     @Path("/deleteTask/{idTask}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Boolean removeTask(@PathParam("idTask") String idTask) {
-        return taskApi.removeTask(idTask);
+    public void removeTask(@PathParam("idTask") String idTask) {
+        taskApi.removeTask(idTask);
     }
 }
