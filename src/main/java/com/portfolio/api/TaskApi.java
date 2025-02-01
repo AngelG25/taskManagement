@@ -27,17 +27,15 @@ public interface TaskApi {
      * Updates a task with the information in the body.
      *
      * @param task the task with the modified fields.
-     * @return true if the task was successfully updated.
      * @throws TaskNotFoundException if the task cannot be found
      */
-    Boolean updateTask(Task task);
+    void updateTask(Task task);
 
     /**
      * Deletes a task by their ID.
      *
      * @param idTask the UUID of the task to delete.
-     * @return true if the task was successfully deleted, or false if the task was not found.
      * @throws TaskNotFoundException if the task cannot be found
      */
-    Boolean removeTask(String idTask);
+    void removeTask(String idTask);
 }
