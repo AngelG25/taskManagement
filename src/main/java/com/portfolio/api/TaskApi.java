@@ -38,4 +38,12 @@ public interface TaskApi {
      * @throws TaskNotFoundException if the task cannot be found
      */
     void removeTask(String idTask);
+
+    /**
+     * Creates a task with the information in the body.
+     *
+     * @param task the task that will be created.
+     */
+
+    void createTask(Task task);
 }

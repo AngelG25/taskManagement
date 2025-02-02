@@ -2,43 +2,39 @@ package com.portfolio.rest;
 
 import com.portfolio.api.TaskApi;
 import com.portfolio.api.models.Task;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Stream;
 
+@RestController
 @AllArgsConstructor
 public class TaskRest {
 
     private final TaskApi taskApi;
 
-    @GET
-    @Path("/getTasks")
-    @Produces(MediaType.APPLICATION_JSON)
+    @GetMapping("/getTasks")
     public Stream<Task> getTasks() {
         return taskApi.getTasks();
     }
 
-    @GET
-    @Path("/getTaskById/{idTask}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.TEXT_PLAIN)
-    public Task getTaskById(@PathParam("idTask") String idTask) {
+    @GetMapping("/getTaskById/{idTask}")
+    public Task getTaskById(@PathVariable("idTask") String idTask) {
         return taskApi.getTaskById(idTask);
     }
 
-    @POST
-    @Path("/updateTask")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updateTask(Task task) {
+    @PostMapping("/createTask")
+    public void createTask(@RequestBody Task task) {
+        taskApi.createTask(task);
+    }
+
+    @PostMapping("/updateTask")
+    public void updateTask(@RequestBody Task task) {
         taskApi.updateTask(task);
     }
 
-    @POST
-    @Path("/deleteTask/{idTask}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void removeTask(@PathParam("idTask") String idTask) {
+    @PostMapping("/deleteTask/{idTask}")
+    public void removeTask(@PathVariable("idTask") String idTask) {
         taskApi.removeTask(idTask);
     }
 }

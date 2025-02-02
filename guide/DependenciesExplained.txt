@@ -19,3 +19,7 @@ The dependency "jackson-annotations" is used for the serialization and deseriali
 The "validation-api" dependency is necessary for the validation of the objects through the @Valid annotation, this dependency needs another dependency
 to be useful, for example, the "annotations" dependency with "org.jetbrains" as group id that allows us to check @Size, @NotNull ...
 
+The "jackson-databind" dependency is used for the mapping from Dao to Dto and vice versa, it is very useful because it allows us to use ObjectMapper
+
+The "spring-boot-starter-web" dependency is fundamental because is the way the app knows it has to be running as a web waiting for requests
+
