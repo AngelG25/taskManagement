@@ -61,6 +61,17 @@ public class TaskSrv implements TaskApi {
         }
     }
 
+    @Override
+    public void createTask(Task task) {
+        log.info("Create task request...");
+        if (!checkExistence(task.getIdTask())) {
+            taskRepository.save(objectMapper.convertValue(task, TaskDao.class));
+        } else {
+            log.error("Task with id: {} already exists", task.getIdTask());
+            throw new TaskNotFoundException(TASK_ID + task.getIdTask() + "already exists");
+        }
+    }
+
     private static void throwException(final String idTask) {
         log.error(LOG_ERROR, idTask);
         throw new TaskNotFoundException(TASK_ID + idTask + NOT_FOUND);
