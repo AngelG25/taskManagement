@@ -25,7 +25,7 @@ public class TaskRest {
 
     @PostMapping("/createTask")
     public void createTask(@RequestBody Task task) {
-        taskApi.updateTask(task);
+        taskApi.createTask(task);
     }
 
     @PostMapping("/updateTask")
