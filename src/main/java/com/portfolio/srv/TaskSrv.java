@@ -23,7 +23,7 @@ public class TaskSrv implements TaskApi {
     private static final String TASK_ID = "Task with id: ";
     private static final String NOT_FOUND = "couldn't be found";
     private static final String LOG_ERROR = "Task with id: {} couldn't be found";
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();        // TODO change objectMapper for MapStruct
 
     @Override
     public Stream<Task> getTasks() {
@@ -64,12 +64,11 @@ public class TaskSrv implements TaskApi {
     @Override
     public void createTask(Task task) {
         log.info("Create task request...");
-        if (!checkExistence(task.getIdTask())) {
-            taskRepository.save(objectMapper.convertValue(task, TaskDao.class));
-        } else {
-            log.error("Task with id: {} already exists", task.getIdTask());
-            throw new TaskNotFoundException(TASK_ID + task.getIdTask() + "already exists");
-        }
+        //TODO check if the same description already exists
+        taskRepository.save(objectMapper.convertValue(task, TaskDao.class));
+        log.error("Task with id: {} already exists", task.getIdTask());
+        throw new TaskNotFoundException(TASK_ID + task.getIdTask() + "already exists");
+
     }
 
     private static void throwException(final String idTask) {
