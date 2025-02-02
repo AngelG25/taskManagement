@@ -6,6 +6,7 @@ import com.portfolio.api.exceptions.TaskNotFoundException;
 import com.portfolio.api.models.Task;
 import com.portfolio.dao.TaskDao;
 import com.portfolio.repositories.TaskRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,14 @@ import java.util.stream.Stream;
 @Service
 @AllArgsConstructor
 @Log4j2
+@Transactional      // If the operation fails it is revoked without doing anything
 public class TaskSrv implements TaskApi {
 
     private final TaskRepository taskRepository;
     private static final String TASK_ID = "Task with id: ";
     private static final String NOT_FOUND = "couldn't be found";
     private static final String LOG_ERROR = "Task with id: {} couldn't be found";
-    private ObjectMapper objectMapper;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public Stream<Task> getTasks() {
