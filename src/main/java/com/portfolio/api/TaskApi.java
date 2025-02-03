@@ -34,7 +34,7 @@ public interface TaskApi {
     /**
      * Deletes a task by their ID.
      *
-     * @param idTask the UUID of the task to delete.
+     * @param idTask the id of the task to delete.
      * @throws TaskNotFoundException if the task cannot be found
      */
     void removeTask(String idTask);

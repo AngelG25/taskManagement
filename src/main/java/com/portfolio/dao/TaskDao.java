@@ -1,19 +1,25 @@
 package com.portfolio.dao;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "tasks")
 public class TaskDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "uuid", nullable = false)
-    String uuidTask;
+    @Column(name = "id_task", nullable = false)
+    String idTask;
 
     @Column(name = "creation_date", updatable = false)
     @CreationTimestamp
