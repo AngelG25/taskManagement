@@ -23,3 +23,5 @@ The "jackson-databind" dependency is used for the mapping from Dao to Dto and vi
 
 The "spring-boot-starter-web" dependency is fundamental because is the way the app knows it has to be running as a web waiting for requests
 
+The "mapstruct" and "mapstruct-processor" are used for mapping automatically the TaskDao into Task
+
