@@ -7,6 +7,8 @@ This project is an API developed in Java that implements CRUD operations for tas
 - Use of **Postman** and **Swagger** for testing.
 - Implementation of **custom exception handling**.
 - Data persistence in a simple database.
+- Docker compose.yml to create a local repository of PostgreSQL (it is necessary to have docker or rancher in your PC)
+- There is a guide folder with the structure of the hole project and the explanation of the pom.xml and its dependencies.
 
 ## Key Features
 
