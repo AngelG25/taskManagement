@@ -1,5 +1,5 @@
-The "spring-boot-starter-data-jpa" is used in this project to use annotations that are included in Hibernate and therefore in the spring
-environment, for example de @CreationTimestamp, it is necessary to configure the database with the help of JPA
+The "spring-boot-starter-data-jpa" is used in this project to use annotations that are included in Hibernate and therefore in the spring environment,
+for example de @CreationTimestamp, it is necessary to configure the database with the help of JPA, it is also used for the configuration of the rest
 
 In this project Jakarta EE is used for several reasons:
 
@@ -22,4 +22,6 @@ to be useful, for example, the "annotations" dependency with "org.jetbrains" as 
 The "jackson-databind" dependency is used for the mapping from Dao to Dto and vice versa, it is very useful because it allows us to use ObjectMapper
 
 The "spring-boot-starter-web" dependency is fundamental because is the way the app knows it has to be running as a web waiting for requests
+
+The "mapstruct" and "mapstruct-processor" are used for mapping automatically the TaskDao into Task
 
