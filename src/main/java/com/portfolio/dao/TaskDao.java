@@ -10,7 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.Instant;
 
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor              // Necessary for the build in the get API
 @Getter
 @Setter
 @Table(name = "tasks")
