@@ -24,7 +24,7 @@ public class TaskSrv implements TaskApi {
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
     private static final String TASK_ID = "Task with id: ";
-    private static final String NOT_FOUND = "couldn't be found";
+    private static final String NOT_FOUND = " couldn't be found";
     private static final String LOG_ERROR = "Task with id: {} couldn't be found";
 
     @Override
@@ -47,7 +47,8 @@ public class TaskSrv implements TaskApi {
         log.info("Update task request...");
         final String idTask = updatedTask.getIdTask();
         if (checkExistence(idTask)) {
-            taskRepository.save(taskMapper.toTaskDao(updatedTask));
+            TaskDao taskDao = taskMapper.toTaskDao(updatedTask);
+            taskRepository.save(taskDao);
         } else {
             throwException(idTask);
         }

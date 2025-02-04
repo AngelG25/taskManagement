@@ -28,12 +28,12 @@ public class TaskRest {
         taskApi.createTask(task);
     }
 
-    @PostMapping("/updateTask")
+    @PutMapping("/updateTask")
     public void updateTask(@RequestBody Task task) {
         taskApi.updateTask(task);
     }
 
-    @PostMapping("/deleteTask/{idTask}")
+    @DeleteMapping("/deleteTask/{idTask}")
     public void removeTask(@PathVariable("idTask") String idTask) {
         taskApi.removeTask(idTask);
     }
