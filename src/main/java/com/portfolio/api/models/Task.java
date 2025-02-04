@@ -19,7 +19,7 @@ public class Task {
     // JsonProperty is used to deserialize or serialize a JSON into a Java Object or vice versa with Jackson
     // This serialization or deserialization takes place in the REST when the endpoint receives a JSON
 
-    @JsonProperty(value = "id_task", access = JsonProperty.Access.READ_ONLY)    // Establish the value in the upcoming json as id_task
+    @JsonProperty(value = "id_task")    // Establish the value in the upcoming json as id_task
     @Valid
     String idTask;
 

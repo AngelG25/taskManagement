@@ -25,20 +25,20 @@ public class TaskDao {
     @CreationTimestamp
     private Instant creationDate;
 
-    @Column(name = "update_date", updatable = false)
+    @Column(name = "update_date")
     @UpdateTimestamp
     private Instant updateDate;
 
-    @Column(name = "end_date", updatable = false)
+    @Column(name = "end_date")
     private Instant endDate;
 
-    @Column(name = "description", updatable = false)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "title", updatable = false)
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "priority", updatable = false)
+    @Column(name = "priority")
     private String priority;
 
 }
