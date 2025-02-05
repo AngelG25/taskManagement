@@ -4,6 +4,8 @@ import com.portfolio.api.TaskApi;
 import com.portfolio.api.models.Task;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,12 @@ import java.util.stream.Stream;
 public class TaskRest {
 
     private final TaskApi taskApi;
+    private static final String TASK_EXAMPLE = "{\n" +
+            "  \"end_date\": \"2025-02-02T18:34:18.903Z\",\n" +
+            "  \"description\": \"This is a sample description for the task.\",\n" +
+            "  \"title\": \"Sample Task\",\n" +
+            "  \"priority\": \"High\"\n" +
+            "}\n";
 
     @Operation(
             summary = "Gets all the tasks",
@@ -37,7 +45,8 @@ public class TaskRest {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping("/getTaskById/{idTask}")
-    public Task getTaskById(@PathVariable("idTask") String idTask) {
+    public Task getTaskById(@Parameter(description = "ID from the task to be eliminated",
+            example = "123e4567-e89b-12d3-a456-426614174000") @PathVariable("idTask") String idTask) {
         return taskApi.getTaskById(idTask);
     }
 
@@ -51,7 +60,10 @@ public class TaskRest {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/createTask")
-    public void createTask(@RequestBody Task task) {
+    public void createTask(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Objet Task that will be created",
+            required = true,
+            content = @Content(mediaType = "application/json", examples = @ExampleObject(value = TASK_EXAMPLE)))@RequestBody Task task) {
         taskApi.createTask(task);
     }
 
@@ -65,8 +77,10 @@ public class TaskRest {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PutMapping("/updateTask")
-    public void updateTask(@Parameter(description = "Task with the fields updated",
-            example = "123e4567-e89b-12d3-a456-426614174000")@RequestBody Task task) {
+    public void updateTask(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Objet Task with the fields to update",
+            required = true,
+            content = @Content(mediaType = "application/json", examples = @ExampleObject(value = TASK_EXAMPLE))) @RequestBody Task task) {
         taskApi.updateTask(task);
     }
 
