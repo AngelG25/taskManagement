@@ -10,4 +10,6 @@ public interface TaskRepository extends JpaRepository<TaskDao, String> {
     // Using JpaRepository creates a CRUD automatically for the TaskRepository and is perfect
     // for an application using Jakarta JPA with Hibernate
 
+    boolean existsByTitle(String title);
+
 }

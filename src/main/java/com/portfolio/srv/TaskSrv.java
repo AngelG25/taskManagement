@@ -1,14 +1,13 @@
 package com.portfolio.srv;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.portfolio.api.TaskApi;
+import com.portfolio.api.exceptions.RepeatedTaskException;
 import com.portfolio.api.exceptions.TaskNotFoundException;
 import com.portfolio.api.models.Task;
 import com.portfolio.dao.TaskDao;
 import com.portfolio.repositories.TaskRepository;
 import com.portfolio.srv.utils.TaskMapper;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -30,7 +29,8 @@ public class TaskSrv implements TaskApi {
     @Override
     public Stream<Task> getTasks() {
         log.info("Get tasks request..");
-        return taskRepository.findAll().stream()
+        return taskRepository.findAll()
+                .stream()
                 .map(taskMapper::toTaskDto);
     }
 
@@ -50,7 +50,7 @@ public class TaskSrv implements TaskApi {
             TaskDao taskDao = taskMapper.toTaskDao(updatedTask);
             taskRepository.save(taskDao);
         } else {
-            throwException(idTask);
+            notFoundException(idTask);
         }
     }
 
@@ -60,17 +60,22 @@ public class TaskSrv implements TaskApi {
         if (checkExistence(idTask)) {
             taskRepository.deleteById(idTask);
         } else {
-            throwException(idTask);
+            notFoundException(idTask);
         }
     }
 
     @Override
     public void createTask(Task task) {
         log.info("Create task request...");
-        taskRepository.save(taskMapper.toTaskDao(task));
+        if (taskRepository.existsByTitle(task.getTitle())) {
+            log.info("Another task with the same title already exists");
+            throw new RepeatedTaskException("Another task with the same title already exists");
+        } else {
+            taskRepository.save(taskMapper.toTaskDao(task));
+        }
     }
 
-    private static void throwException(final String idTask) {
+    private static void notFoundException(final String idTask) {
         log.error(LOG_ERROR, idTask);
         throw new TaskNotFoundException(TASK_ID + idTask + NOT_FOUND);
     }
