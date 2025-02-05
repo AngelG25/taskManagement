@@ -26,3 +26,5 @@ The "spring-boot-starter-web" dependency is fundamental because is the way the a
 The "mapstruct" and "mapstruct-processor" are used for mapping automatically the TaskDao into Task
 
 The "springdoc-openapi-starter-webmvc-ui" is used for swagger and documentation of the hole project, it is not necessary but a good practice
+
+The "junit-jupiter" and "mockito-junit-jupiter" is necessary for the testing of the application
