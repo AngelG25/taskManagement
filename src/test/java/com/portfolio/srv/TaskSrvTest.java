@@ -1,6 +1,6 @@
 package com.portfolio.srv;
 
-
+import com.portfolio.api.exceptions.RepeatedTaskException;
 import com.portfolio.api.exceptions.TaskNotFoundException;
 import com.portfolio.api.models.Task;
 import com.portfolio.dao.TaskDao;
@@ -86,6 +86,52 @@ class TaskSrvTest {
 
         assertThrows(TaskNotFoundException.class, () -> taskSrv.updateTask(task));
 
-        verify(taskRepository, times(1)).existsById(any());
+        verify(taskRepository, only()).existsById(any());
+    }
+
+    @Test
+    void testRemoveTask() {
+        when(taskRepository.existsById(UUID)).thenReturn(true);
+
+        taskSrv.removeTask(UUID);
+
+        verify(taskRepository, times(1)).existsById(UUID);
+        verify(taskRepository, times(1)).deleteById(UUID);
+    }
+
+    @Test
+    void testRemoveNonExistingTask() {
+        when(taskRepository.existsById(UUID)).thenReturn(false);
+
+        assertThrows(TaskNotFoundException.class, () -> taskSrv.removeTask(UUID));
+
+        verify(taskRepository, only()).existsById(UUID);
+    }
+
+    @Test
+    void testCreateTask() {
+        Task task = objectsCreator.taskCreation();
+        TaskDao createdTask = objectsCreator.taskDaoCreation();
+
+        when(taskRepository.existsByTitle(anyString())).thenReturn(false);
+        when(taskMapper.toTaskDao(task)).thenReturn(createdTask);
+
+        taskSrv.createTask(task);
+
+        verify(taskRepository, times(1)).existsByTitle(anyString());
+        verify(taskRepository, times(1)).save(createdTask);
+        verify(taskMapper, only()).toTaskDao(task);
+    }
+
+    @Test
+    void testCreateAlreadyExistingTask() {
+        Task task = objectsCreator.taskCreation();
+
+        when(taskRepository.existsByTitle(anyString())).thenReturn(true);
+
+        assertThrows(RepeatedTaskException.class, () -> taskSrv.createTask(task));
+
+        verify(taskRepository, only()).existsByTitle(anyString());
+        verifyNoInteractions(taskMapper);
     }
 }
