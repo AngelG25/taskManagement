@@ -3,6 +3,7 @@ package com.portfolio.api.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 import org.jetbrains.annotations.NotNull;
@@ -25,15 +26,18 @@ public class Task {
 
     @JsonProperty(value = "creation_date", access = JsonProperty.Access.READ_ONLY)  // Establish the value in the upcoming json as creation_date
     @Valid
+    @EqualsAndHashCode.Exclude
     Instant creationDate;
 
     @JsonProperty(value = "update_date")    // Establish the value in the upcoming json as update_date
     @Valid
+    @EqualsAndHashCode.Exclude
     Instant updateDate;
 
     @JsonProperty(value = "end_date")       // Establish the value in the upcoming json as end_date
     @NotNull
     @Valid
+    @EqualsAndHashCode.Exclude
     Instant endDate;
 
     @JsonProperty(value = "description", required = true)   // Establish the value in the upcoming json as description
