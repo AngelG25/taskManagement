@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
 @NoArgsConstructor
-public class ObjectsCreator {
+public class TasksCreator {
 
     private static final String UUID = "123e4567-e89b-12d3-a456-426614174000";
 

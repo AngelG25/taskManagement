@@ -5,7 +5,7 @@ import com.portfolio.api.exceptions.TaskNotFoundException;
 import com.portfolio.api.models.Task;
 import com.portfolio.dao.TaskDao;
 import com.portfolio.repositories.TaskRepository;
-import com.portfolio.srv.utils.ObjectsCreator;
+import com.portfolio.srv.utils.TasksCreator;
 import com.portfolio.srv.utils.TaskMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 class TaskSrvTest {
 
     private static final String UUID = "123e4567-e89b-12d3-a456-426614174000";
-    private static final ObjectsCreator objectsCreator = new ObjectsCreator();
+    private final TasksCreator tasksCreator = new TasksCreator();
 
     @InjectMocks
     TaskSrv taskSrv;
@@ -42,8 +42,8 @@ class TaskSrvTest {
 
     @Test
     void testGetTaskByIdOK() {
-        final TaskDao taskDao = objectsCreator.taskDaoCreation();
-        final Task expectedTask = objectsCreator.taskCreation();
+        final TaskDao taskDao = tasksCreator.taskDaoCreation();
+        final Task expectedTask = tasksCreator.taskCreation();
 
         when(taskRepository.findById(UUID)).thenReturn(Optional.ofNullable(taskDao));
         when(taskMapper.toTaskDto(taskDao)).thenReturn(expectedTask);
@@ -64,9 +64,9 @@ class TaskSrvTest {
 
     @Test
     void testUpdateTaskOK() {
-        Task task = objectsCreator.taskCreation();
+        Task task = tasksCreator.taskCreation();
         task = task.toBuilder().idTask(UUID).build();
-        TaskDao savedTask = objectsCreator.taskDaoCreation();
+        TaskDao savedTask = tasksCreator.taskDaoCreation();
 
         when(taskRepository.existsById(UUID)).thenReturn(true);
         when(taskMapper.toTaskDao(task)).thenReturn(savedTask);
@@ -80,7 +80,7 @@ class TaskSrvTest {
 
     @Test
     void testUpdateNonExistingTask() {
-        Task task = objectsCreator.taskCreation();
+        Task task = tasksCreator.taskCreation();
 
         when(taskRepository.existsById(any())).thenReturn(false);
 
@@ -110,8 +110,8 @@ class TaskSrvTest {
 
     @Test
     void testCreateTask() {
-        Task task = objectsCreator.taskCreation();
-        TaskDao createdTask = objectsCreator.taskDaoCreation();
+        Task task = tasksCreator.taskCreation();
+        TaskDao createdTask = tasksCreator.taskDaoCreation();
 
         when(taskRepository.existsByTitle(anyString())).thenReturn(false);
         when(taskMapper.toTaskDao(task)).thenReturn(createdTask);
@@ -125,7 +125,7 @@ class TaskSrvTest {
 
     @Test
     void testCreateAlreadyExistingTask() {
-        Task task = objectsCreator.taskCreation();
+        Task task = tasksCreator.taskCreation();
 
         when(taskRepository.existsByTitle(anyString())).thenReturn(true);
 
