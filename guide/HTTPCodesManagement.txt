@@ -1,0 +1,14 @@
+When doing a request to an endpoint, normally we expect a status code of the response along with the actual response.
+
+The status code 200 will be returned automatically if the object returned is a serializable one and is functional.
+While the 500 status code will be returned if something fails.
+
+If we are using something like Spring Boot we can use the object ResponseEntity<Object>, this way we can return the
+status code with the object we are being asked for this way:
+    ResponseEntity.ok(Object)   //   ResponseEntity.notFound().build()
+The object ResponseEntity offers a lot of status code and it is very easy to implement.
+
+In case we are using Jakarta or JAX-RS the status code works differently, if we want to capture all the range
+of status code it will be necessary to be managed by exceptions, creating one for every possible scenario and
+throwing them in case of the specific fail. However, jakarta already offers a lot of exceptions that are created
+for this and already throws the code like notFoundException from JAX-RS.
